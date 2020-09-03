@@ -64,7 +64,7 @@ background-color:black;
   </div>
 </div>
   <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <div id="my-signin2"></div>
+      <div id="my-signin2 " style="color:#0a90cf"></div>
   <script>
     function onSuccess(googleUser) {
       console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
@@ -75,10 +75,10 @@ background-color:black;
     function renderButton() {
       gapi.signin2.render('my-signin2', {
         'scope': 'profile email',
-        'width': 240,
+        'width': 260,
         'height': 50,
         'longtitle': true,
-        'theme': 'dark',
+        
         'onsuccess': onSuccess,
         'onfailure': onFailure
       });
