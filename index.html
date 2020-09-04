@@ -105,6 +105,7 @@ background-color:black;
   <p class="mt-5 mb-3 text-muted">&copy; 2020-2020</p>
 </form>
 </body>
+       <script>
        function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -112,6 +113,7 @@ background-color:black;
   console.log('Image URL: ' + profile.getImageUrl());
   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 }
+       </script>
        <script>
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
