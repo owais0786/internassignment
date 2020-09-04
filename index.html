@@ -43,6 +43,7 @@ background-color:black;
     
  
   </head>
+       <script src="https://apis.google.com/js/platform.js" async defer></script>
   <body class="text-center" style="background-color:grey;">
 
     <form class=" form-signin container-fluid" >
@@ -67,7 +68,8 @@ background-color:black;
 </div>
   <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
        
-     <script>
+     <div id="my-signin2"></div>
+  <script>
     function onSuccess(googleUser) {
       console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
     }
@@ -77,19 +79,17 @@ background-color:black;
     function renderButton() {
       gapi.signin2.render('my-signin2', {
         'scope': 'profile email',
-        'width': 300,
+        'width': 240,
         'height': 50,
         'longtitle': true,
-        
-         'theme':'dark',
+        'theme': 'dark',
         'onsuccess': onSuccess,
         'onfailure': onFailure
       });
     }
-  </script> 
-          <div id=" my-signin2"></div>
+  </script>
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
        
-        <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
        <a href="#" onclick="signOut()">Sign out</a>
    <script>
   function signOut() {
@@ -100,16 +100,23 @@ background-color:black;
   }
        </script>
         
-     <script>
-      function onSignIn(googleUser) {
+     
+  <p class="mt-5 mb-3 text-muted">&copy; 2020-2020</p>
+</form>
+</body>
+       function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
   console.log('Name: ' + profile.getName());
   console.log('Image URL: ' + profile.getImageUrl());
   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-}  
-    </script>
-  <p class="mt-5 mb-3 text-muted">&copy; 2020-2020</p>
-</form>
-</body>
+}
+       <script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+       </script>
 </html>
